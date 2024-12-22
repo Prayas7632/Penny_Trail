@@ -2,6 +2,7 @@ import express, { urlencoded } from 'express'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import connectDB from './database/db.js';
 
 dotenv.config({});
 
@@ -21,5 +22,6 @@ app.use(cors(corsOptions));
 
 
 app.listen(8080, ()=> {
+     connectDB();
      console.log(`Server listen at port ${PORT}`)
 })
