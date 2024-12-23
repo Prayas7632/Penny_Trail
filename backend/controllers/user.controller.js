@@ -30,8 +30,7 @@ export const register = async (req, res) => {
             success:true
         })
     } catch (error) {
-        console.log(error);
-        
+        console.log(error); 
     }
 }
 
@@ -73,6 +72,18 @@ export const login = async (req, res) => {
             success:true
         })
     } catch (error) {
+        console.log(error);
         
+    }
+}
+
+export const logout = async (req, res) => {
+    try {
+        return res.status(200).cookie("token", null, "", {maxAge:0}).json({
+            message:'User logged Out successfully',
+            success:true,
+        })
+    } catch (error) {
+        console.log(error);
     }
 }
