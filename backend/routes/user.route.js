@@ -4,8 +4,8 @@ import { login, logout, register } from "../controllers/user.controller.js";
 const router = express.Router();
 
 router.route("/register").post(register);
-router.route("/register").post(login);
-router.route("/register").get(logout);
+router.route("/login").post(login);
+router.route("/logout").get(logout);
 
 
 export default router;
