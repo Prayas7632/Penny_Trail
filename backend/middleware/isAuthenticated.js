@@ -26,4 +26,4 @@ const isAutheticated = async (req, res) => {
         
     }
 }
-export default isAutheticated;
+export default isAuthenticated;
