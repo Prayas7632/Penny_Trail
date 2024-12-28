@@ -86,3 +86,16 @@ export const markAsDoneUndone = async(req, res) => {
         console.log(error);
     }
 }
+
+export const removeExpense = async (req, res) => {
+    try {
+        const expenseId = req.params.id;
+        await Expense.findByIdAndDelete(expenseId);
+        return res.status(200).json({
+            message:"Expense removed.",
+            success:true,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
