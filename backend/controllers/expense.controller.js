@@ -65,3 +65,24 @@ export const getAllExpense = async (req, res) => {
         
     }
 }
+
+export const markAsDoneUndone = async(req, res) => {
+    try {
+        const expenseId = req.params.id;
+        const done = req.body;
+        const expense = await Expense.findByIdAndUpdate(expenseId, done, {new:true});
+
+        if(!expense) {
+            return res.status(404).json({
+                message:"Expense not found",
+                success:false,
+            })
+        };
+        return response.status(200).json({
+            message:`Expense mark as ${expense.done ? 'done' : 'undone'}`,
+            success:true,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
