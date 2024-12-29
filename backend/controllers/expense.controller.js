@@ -99,3 +99,21 @@ export const removeExpense = async (req, res) => {
         console.log(error);
     }
 }
+
+export const updateExpense = async (Request, res) => {
+    try {
+        const {description, amount, category} = req.body;
+        const expenseId = req.params.id;
+        const updateData = {description, amount, category};
+
+        const expense = await Expense.findByIdAndUpdate(expenseId, updateData, {new:true});
+
+        return res.status(200).json({
+            message:"Expense updated.",
+            expense,
+            success:true,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
