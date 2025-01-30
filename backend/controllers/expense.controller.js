@@ -55,7 +55,11 @@ export const getAllExpense = async (req, res) => {
                 message:"NO expense found.",
                 success:false,
             })
-        }
+        };
+        return res.status(200).json({
+            expense,
+            success:true
+        })
     } catch (error) {
         console.log(error);
         
